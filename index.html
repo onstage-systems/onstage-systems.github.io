@@ -21,16 +21,46 @@
 		</div>
 		
 		<div class="newsletter">
-			
+			<h3>Prihaja kmalu ...</h3>
+			<p>Če vas zanima napredek našega izdelka, nam pustite svoj email naslov in prejeli boste novice.</p>
+			<form id="form">
+				<input type="email" id="email"><button>Prijavi se</button>
+			</form>
+			<p id="msg"></p>
 		</div>
 	</div>
 
-	<script>
+	<script type="module">
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+		import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
+		import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+
+		// TODO: Add SDKs for Firebase products that you want to use
+		// https://firebase.google.com/docs/web/setup#available-libraries
+	  
+		// Your web app's Firebase configuration
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		const firebaseConfig = {
+		  apiKey: "AIzaSyBqy-zkIn8wKnjM4uP0kzlSn0p1jzmq314",
+		  authDomain: "onstage-93830.firebaseapp.com",
+		  projectId: "onstage-93830",
+		  storageBucket: "onstage-93830.appspot.com",
+		  messagingSenderId: "557646735050",
+		  appId: "1:557646735050:web:784621fea78712c9d87633",
+		  measurementId: "G-V7MPZR5V6K"
+		};
+	  
+		// Initialize Firebase
+		const app = initializeApp(firebaseConfig);
+		const analytics = getAnalytics(app);
+		const db = getFirestore(app);
+
 		// add a class to the title when it is scrolled to
 		const title = document.getElementById('title');
-		const landing = document.querySelector('.landing');
-		const product = document.querySelector('.product');
-		const newsletter = document.querySelector('.newsletter');
+		const form = document.getElementById('form');
+		const email = document.getElementById('email');
+		const msg = document.getElementById('msg');
+
 
 		window.addEventListener('scroll', () => {
 			console.log(window.scrollY);
@@ -40,6 +70,23 @@
 				title.classList.remove('scrolled');
 			}
 		});
+
+		form.onsubmit = (e) => {
+			e.preventDefault();
+			if (email.value) {
+				addDoc(collection(db, "emails"), {
+					email: email.value
+				}).then(() => {
+					email.value = '';
+					msg.innerHTML = 'Hvala za prijavo!';
+				}).catch((error) => {
+					console.error("Error adding document: ", error);
+					msg.innerHTML = 'Napaka pri prijavi :(';
+				});
+			} else {
+				msg.innerHTML = 'Vnesite email naslov!';
+			}
+		}
 
 	</script>
 </body>

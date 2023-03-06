@@ -1,0 +1,143 @@
+*{
+	scrollbar-width: thin;
+  }
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #333; 
+  border-radius: 4px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+body {
+	background: linear-gradient(180deg, #000000 0%, #000000 60%, #25b0ce 100%);
+	color: #ffffff;
+	font-family: Roboto, Helvetica, sans-serif;
+	overflow: overlay;
+	/* disable selection */
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+						supported by Chrome and Opera */
+}
+
+.max{
+	max-width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.title-container {
+	min-height: 20vw;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	margin-bottom: -8vw;
+	position: sticky;
+	top: 0;
+}
+
+h1 {
+	font-family: Goldman, sans-serif;
+	font-size: 20vw;
+	text-align: center;
+	color: #222;
+	margin: 0;
+	background: -webkit-linear-gradient(#eee, #333);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	transition: font-size 0.3s ease-in-out;
+}
+
+@media screen and (min-width: 1200px) {
+	h1 {
+		font-size: 240px;
+	}
+	.title-container{
+		margin-bottom: -96px;
+		min-height: 240px;
+	}
+}
+
+h1.scrolled {
+	font-size: 50px;
+}
+
+.landing {
+	padding-top: 20vh;
+	text-align: center;
+	position: relative;
+	min-height: 100vh;
+}
+
+.product {
+	max-width: 100%;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.newsletter {
+	color: #fff;
+	padding: 20px;
+	padding-top: 20vh;
+	height: 60vh;
+	margin: 20px;
+	border-radius: 10px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.newsletter h3{
+	font-weight: 100;
+	font-size: 2em;
+	text-align: center;
+}
+
+.newsletter p{
+	font-weight: 100;
+	text-align: center;
+}
+
+.newsletter form{
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.newsletter input{
+	width: 100%;
+	padding: 20px;
+	border: 1px solid #333;
+	border-radius: 10px;
+}
+
+.newsletter button{
+	border: 1px solid #333;
+	width: 30%;
+	min-width: 100px;
+	padding: 20px;
+	border-radius: 10px;
+	margin-left: 10px;
+	background-color: #25b0ce;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-weight: 700;
+}
